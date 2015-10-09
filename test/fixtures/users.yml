@@ -1,0 +1,48 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  name: dr
+  address: MyAddress
+  city: MyCity
+  state: My
+  zip: 1
+  school: MySchool
+  years_in_practice: 1
+
+missing_name:
+  # role_id: role(:missing_name)
+  name:
+  address: MyAddress
+  city: MyCity
+  state: My
+  zip: 1
+  school: MySchool
+  years_in_practice: 1
+
+
+name_len_lt_35:
+  name: <%= "Categorías" + ("." * 24) %>
+  address: MyAddress
+  city: MyCity
+  state: My
+  zip: 1
+  school: MySchool
+  years_in_practice: 1
+
+name_len_eq_35:
+  name: <%= "Categorías" + ("." * 25) %>
+  address: MyAddress
+  city: MyCity
+  state: My
+  zip: 1
+  school: MySchool
+  years_in_practice: 1
+
+name_len_gt_35:
+  name: <%= "Categorías" + ("." * 26) %>
+  address: MyAddress
+  city: MyCity
+  state: My
+  zip: 1
+  school: MySchool
+  years_in_practice: 1
+

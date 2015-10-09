@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009015824) do
+ActiveRecord::Schema.define(version: 20151009022706) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name",              limit: 35
+    t.string   "address"
+    t.string   "city"
+    t.string   "state",             limit: 20
+    t.integer  "zip",               limit: 5
+    t.string   "school"
+    t.integer  "years_in_practice", limit: 3
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end
