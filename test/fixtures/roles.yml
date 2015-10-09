@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  name: one
+  description: for test only
+
+invalid:
+  name: not_valid
+  description: a name other than 'admin', 'recept', 'dr', or 'cust'
+
+missing_name:
+  name:
+  description: name can't be blank
