@@ -1,0 +1,48 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: users(:one)
+  name: MyString
+  pet_type: dog
+  breed: MyString
+  age: 1
+  weight: 1
+
+two:
+  user_id:
+  name: MyString
+  pet_type: dog
+  breed: MyString
+  age: 1
+  weight: 1
+
+pet_missing_name:
+  user_id: users(:one)
+  pet_type: MyString
+  breed: MyString
+  age: 1
+  weight: 1
+
+name_len_lt_35:
+  user_id: users(:one)
+  name: <%= "Categorías" + ("." * 24) %>
+  pet_type: dog
+  breed: MyString
+  age: 1
+  weight: 1
+
+name_len_eq_35:
+  user_id: users(:one)
+  name: <%= "Categorías" + ("." * 25) %>
+  pet_type: cat
+  breed: MyString
+  age: 1
+  weight: 1
+
+name_len_gt_35:
+  user_id: users(:one)
+  name: <%= "Categorías" + ("." * 26) %>
+  pet_type: bird
+  breed: MyString
+  age: 1
+  weight: 1
