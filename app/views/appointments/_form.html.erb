@@ -13,12 +13,10 @@
 
   <div class="field">
     <%= f.label :user_id %><br>
-    <%# = f.text_field :user_id %>
     <%= collection_select(:appointment, :user_id, User.all, :id, :name, {prompt: true}) %>
   </div>
   <div class="field">
     <%= f.label :pet_id %><br>
-    <%# = f.text_field :pet_id %>
     <%= collection_select(:appointment, :pet_id, Pet.all, :id, :name, {prompt: true}) %>
   </div>
   <div class="field">
