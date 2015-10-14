@@ -1,0 +1,2 @@
+
+<%= @menu.collect {|menu| link_to menu[:label], menu[:link]}.join(' | ').html_safe %>
