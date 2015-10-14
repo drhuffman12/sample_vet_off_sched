@@ -16,7 +16,7 @@ class Role < ActiveRecord::Base
   # has_many :users, through: :rights
   # accepts_nested_attributes_for :rights, :users
 
-  validates :name, presence: true, uniqueness: true
+  validates_presence_of :name, uniqueness: true
   validates_inclusion_of :name, :in => %w( admin recept dr cust )
 
 end
