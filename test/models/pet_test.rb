@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: pets
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  name       :string(35)
+#  pet_type   :string
+#  breed      :string(35)
+#  age        :integer
+#  weight     :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'test_helper'
 
 class PetTest < ActiveSupport::TestCase

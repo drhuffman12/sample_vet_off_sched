@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                :integer          not null, primary key
+#  name              :string(35)
+#  address           :string
+#  city              :string
+#  state             :string(20)
+#  zip               :integer
+#  school            :string
+#  years_in_practice :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 one:
   # role_id: roles(:cust)

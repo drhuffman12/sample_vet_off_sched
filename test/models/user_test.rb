@@ -1,4 +1,20 @@
 # encoding: utf-8
+# == Schema Information
+#
+# Table name: users
+#
+#  id                :integer          not null, primary key
+#  name              :string(35)
+#  address           :string
+#  city              :string
+#  state             :string(20)
+#  zip               :integer
+#  school            :string
+#  years_in_practice :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
