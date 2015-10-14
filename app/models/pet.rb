@@ -1,5 +1,6 @@
 class Pet < ActiveRecord::Base
   belongs_to :user
+  has_many :appointments
 
   validates_presence_of :name, null: false
   validates :name, length: { maximum: 35 }

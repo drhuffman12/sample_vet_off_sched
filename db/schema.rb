@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009023454) do
+ActiveRecord::Schema.define(version: 20151009024212) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "pet_id"
+    t.datetime "date_of_visit"
+    t.boolean  "reminder"
+    t.string   "reason"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "appointments", ["pet_id"], name: "index_appointments_on_pet_id"
+  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id"
 
   create_table "pets", force: :cascade do |t|
     t.integer  "user_id"

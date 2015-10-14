@@ -1,0 +1,38 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: users(:one)
+  pet: pets(:one)
+  date_of_visit: <%= DateTime.current + 0.1 %>
+  reminder: false
+  reason: MyString
+
+two:
+  user: user_cust
+  pet: pet_cust
+  date_of_visit: <%= DateTime.current + 0.1 %>
+  reminder: false
+  reason: MyString
+
+date_past:
+  user: user_cust
+  pet: pet_cust
+  date_of_visit: <%= DateTime.current - 1 %>
+  reminder: false
+  reason: MyString
+
+date_future:
+#  user_id: users(:one)
+#  pet_id: pets(:one)
+  user: user_cust
+  pet: pet_cust
+  date_of_visit: <%= DateTime.current + 1 %>
+  reminder: false
+  reason: MyString
+
+appt_cust:
+  user: user_cust
+  pet: pet_cust
+  date_of_visit: <%= DateTime.current + 1 %>
+  reminder: false
+  reason: MyString

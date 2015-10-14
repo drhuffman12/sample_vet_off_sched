@@ -46,3 +46,12 @@ name_len_gt_35:
   breed: MyString
   age: 1
   weight: 1
+
+pet_cust:
+#  user_id: users(:cust)
+  user: user_cust
+  name: MyString
+  pet_type: dog
+  breed: MyString
+  age: 1
+  weight: 1

@@ -18,7 +18,7 @@
   <tbody>
     <% @pets.each do |pet| %>
       <tr>
-        <td><%= pet.user %></td>
+        <td><%= pet.user.name if pet.user %></td>
         <td><%= pet.name %></td>
         <td><%= pet.pet_type %></td>
         <td><%= pet.breed %></td>

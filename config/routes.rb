@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :rights
+  resources :appointments
   resources :pets
   resources :users
   resources :roles

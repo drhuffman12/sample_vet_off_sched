@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
-  # belongs_to :role
-  has_many :roles
+
+  # # has_and_belongs_to_many :roles, join_table: :rights
+  # has_many :rights, :dependent => :destroy
+  # has_many :roles, through: :rights
+  # accepts_nested_attributes_for :rights, :roles
+
+  has_many :pets
+  has_many :appointments
 
   validates_presence_of :name, null: false
   validates :name, length: { maximum: 35 }

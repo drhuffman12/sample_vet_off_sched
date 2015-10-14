@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 one:
-  name: dr
+  # role_id: roles(:cust)
+  name: Some Doctor
   address: MyAddress
   city: MyCity
   state: My
@@ -46,3 +47,12 @@ name_len_gt_35:
   school: MySchool
   years_in_practice: 1
 
+user_cust:
+#  role: cust
+  name: Customer
+  address: MyAddress
+  city: MyCity
+  state: My
+  zip: 1
+  school: MySchool
+  years_in_practice: 1

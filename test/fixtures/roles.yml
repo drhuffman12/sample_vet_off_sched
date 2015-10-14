@@ -10,3 +10,7 @@ invalid:
 missing_name:
   name:
   description: name can't be blank
+
+role_cust:
+  name: cust
+  description: Customer
