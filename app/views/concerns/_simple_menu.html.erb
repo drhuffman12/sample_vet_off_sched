@@ -1,2 +1,2 @@
 
-<%= @menu.collect {|menu| link_to menu[:label], menu[:link]}.join(' | ').html_safe %>
+<%= @menu.collect { |menu| (controller_name == menu[:label].downcase) ? menu[:label] : (link_to menu[:label], menu[:link]) }.join(' | ').html_safe %>

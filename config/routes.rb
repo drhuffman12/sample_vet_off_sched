@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  scope "/admin" do
+    resources :users
+  end
+
   resources :rights
   get 'appointments/pets_per_user' => 'appointments#pets_per_user', as: :pets_per_user
   resources :appointments
@@ -12,7 +17,12 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+
   root 'home#index'
+  # authenticated :user do
+  #   root to: 'home#index', as: :authenticated_root
+  # end
+  # root to: redirect('/users/sign_in')
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

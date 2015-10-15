@@ -1,6 +1,8 @@
 class RightsController < ApplicationController
   before_action :set_right, only: [:show, :edit, :update, :destroy]
 
+  # before_action :authenticate_user!
+
   # GET /rights
   # GET /rights.json
   def index

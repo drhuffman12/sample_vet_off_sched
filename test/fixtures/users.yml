@@ -18,6 +18,7 @@
 one:
   # role_id: roles(:cust)
   name: Some Doctor
+  email: one@nowhere.com
   address: MyAddress
   city: MyCity
   state: My
@@ -28,6 +29,7 @@ one:
 missing_name:
   # role_id: role(:missing_name)
   name:
+  email: missing_name@nowhere.com
   address: MyAddress
   city: MyCity
   state: My
@@ -38,6 +40,7 @@ missing_name:
 
 name_len_lt_35:
   name: <%= "Categorías" + ("." * 24) %>
+  email: name_len_lt_35@nowhere.com
   address: MyAddress
   city: MyCity
   state: My
@@ -47,6 +50,7 @@ name_len_lt_35:
 
 name_len_eq_35:
   name: <%= "Categorías" + ("." * 25) %>
+  email: name_len_eq_35@nowhere.com
   address: MyAddress
   city: MyCity
   state: My
@@ -56,6 +60,7 @@ name_len_eq_35:
 
 name_len_gt_35:
   name: <%= "Categorías" + ("." * 26) %>
+  email: name_len_gt_35@nowhere.com
   address: MyAddress
   city: MyCity
   state: My
@@ -66,6 +71,18 @@ name_len_gt_35:
 user_cust:
 #  role: cust
   name: Customer
+  email: user_cust@nowhere.com
+  address: MyAddress
+  city: MyCity
+  state: My
+  zip: 1
+  school: MySchool
+  years_in_practice: 1
+
+user_admin:
+#  roles: <%= Role.where(name: 'admin') %>
+  name: admin
+  email: user_admin@nowhere.com
   address: MyAddress
   city: MyCity
   state: My

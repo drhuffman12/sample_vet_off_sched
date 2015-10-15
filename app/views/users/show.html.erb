@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
   <strong>Address:</strong>
   <%= @user.address %>
 </p>
@@ -35,5 +40,28 @@
   <%= @user.years_in_practice %>
 </p>
 
+<p>
+  <strong>Roles:</strong>
+  <%= @user.roles.collect{|role| role.description}.join(', ') %>
+</p>
+
+<p>
+  <strong>Pets:</strong>
+  <%= @user.pets.collect{|pet| pet.name}.join(', ') %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<p>
+  <strong>Joined on:</strong>
+  <%= @joined_on %>
+</p>
+<p>
+  <strong>Last logged in on:</strong>
+  <%= @last_login %>
+</p>
+<p>
+  <strong>No. times logged in:</strong>
+  <%= @user.sign_in_count %>
+</p>

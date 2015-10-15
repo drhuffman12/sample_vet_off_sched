@@ -19,4 +19,12 @@ class Role < ActiveRecord::Base
   validates_presence_of :description, uniqueness: true
   validates_inclusion_of :name, :in => %w( admin recept dr cust )
 
+  def assosciated_users
+    if self.users.length == 0
+      "None"
+    else
+      self.users.map(&:name).join(", ")
+    end
+  end
+
 end

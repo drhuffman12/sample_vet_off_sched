@@ -1,6 +1,8 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
+  # before_action :authenticate_user!
+
   def pets_per_user
     begin
       @pet_owners = Pet.pet_owners

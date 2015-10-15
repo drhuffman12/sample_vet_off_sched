@@ -29,3 +29,7 @@ role_cust:
 role_dr:
   name: dr
   description: Doctor
+
+role_admin:
+  name: admin
+  description: admin

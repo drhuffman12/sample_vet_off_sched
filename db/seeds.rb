@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 role_admin = Role.find_or_create_by(name: 'admin', description: 'Administrator')
+
 role_recept = Role.find_or_create_by(name: 'recept', description: 'Receptionist')
 role_dr = Role.find_or_create_by(name: 'dr', description: 'Doctor')
 role_cust = Role.find_or_create_by(name: 'cust', description: 'Customer')
@@ -14,6 +15,10 @@ role_cust = Role.find_or_create_by(name: 'cust', description: 'Customer')
 user_owner = User.find_or_create_by(name: 'The Owner', years_in_practice: 1)
 user_owner.roles << role_admin unless user_owner.roles.include?(role_admin)
 user_owner.roles << role_dr unless user_owner.roles.include?(role_dr)
+
+user_owner.email = 'admin@nowhere.com'
+user_owner.password = '1234'
+user_owner.save
 
 user_recpt = User.find_or_create_by(name: 'The Receptionist')
 user_recpt.roles << role_recept unless user_recpt.roles.include?(role_recept)

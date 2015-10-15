@@ -13,3 +13,12 @@ class ActiveSupport::TestCase
   end
 
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+  def setup
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    # sign_in FactoryGirl.create(:admin)
+    sign_in users(:user_admin)
+  end
+end

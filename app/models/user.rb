@@ -15,6 +15,10 @@
 #
 
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   has_many :rights, :dependent => :destroy
   has_many :roles, through: :rights
@@ -35,6 +39,17 @@ class User < ActiveRecord::Base
     # else
     #   errors.add(:base, 'Years in Practice not applicable unless a Doctor') unless years_in_practice.nil?
     end
+  end
+
+  before_save :assign_role
+
+  def assign_role
+    # self.role = Role.find_by(name: 'Customer') if self.role.nil?
+    self.roles << Role.find_by(name: 'cust') if self.roles.empty?
+  end
+
+  def role
+    self.roles
   end
 
 end

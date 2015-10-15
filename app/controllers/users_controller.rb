@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # before_action :authenticate_user!
+
   # GET /users
   # GET /users.json
   def index
@@ -10,6 +12,14 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
+    @joined_on = @user.created_at # .to_formatted_s(:short)
+    if @user.current_sign_in_at
+      @last_login = @user.current_sign_in_at #.to_formatted_s(:short)
+    else
+      @last_login = "never"
+    end
+
   end
 
   # GET /users/new
@@ -70,5 +80,8 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :address, :city, :state, :zip, :school, :years_in_practice, :role_ids => [])
+
+      params.require(:user).permit(:email, :password, :password_confirmation, :name, :role_id)
+
     end
 end
