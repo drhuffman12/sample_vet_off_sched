@@ -52,4 +52,24 @@ class User < ActiveRecord::Base
     self.roles
   end
 
+  def admin?
+    self.roles.map(&:name).include?('admin')
+  end
+
+  def recept?
+    self.roles.map(&:name).include?('recept')
+  end
+
+  def dr?
+    self.roles.map(&:name).include?('dr')
+  end
+
+  def cust?
+    self.roles.map(&:name).include?('cust')
+  end
+
+  def ability
+    @ability ||= Ability.new(self)
+  end
+
 end

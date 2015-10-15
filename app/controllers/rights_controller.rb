@@ -1,12 +1,15 @@
 class RightsController < ApplicationController
-  before_action :set_right, only: [:show, :edit, :update, :destroy]
+  # before_action :set_right, only: [:show, :edit, :update, :destroy]
 
   # before_action :authenticate_user!
+  load_and_authorize_resource
 
   # GET /rights
   # GET /rights.json
   def index
-    @rights = Right.all
+    @rights = Right.order('user_id, role_id')
+    @rights = @rights.where(user_id: current_user.id) unless current_user.ability.can? :manage, Right
+    @rights = @rights.all
   end
 
   # GET /rights/1

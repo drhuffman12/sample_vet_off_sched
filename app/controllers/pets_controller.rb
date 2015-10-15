@@ -1,12 +1,15 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  # before_action :set_pet, only: [:show, :edit, :update, :destroy]
 
   # before_action :authenticate_user!
+  load_and_authorize_resource
 
   # GET /pets
   # GET /pets.json
   def index
-    @pets = Pet.all
+    @pets = Pet.order('user_id, id')
+    @pets = @pets.where(user_id: current_user.id) unless current_user.ability.can? :manage, Pet
+    @pets = @pets.all
   end
 
   # GET /pets/1

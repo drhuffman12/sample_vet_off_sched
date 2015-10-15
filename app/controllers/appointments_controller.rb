@@ -1,12 +1,13 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  # before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   # before_action :authenticate_user!
+  load_and_authorize_resource
 
   def pets_per_user
     begin
       @pet_owners = Pet.pet_owners
-      @user = @pet_owners.where(id: params[:id]).first
+      @user = @pet_owners.where(id: params[:appointment_user_id]).first
       @pets = (@user ? @user.pets : nil)
     rescue
       @pets = nil
@@ -16,7 +17,9 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.order('date_of_visit DESC, user_id, pet_id')
+    @appointments = @appointments.where(user_id: current_user.id) unless current_user.ability.can? :manage, Appointment
+    @appointments = @appointments.all
   end
 
   # GET /appointments/1
@@ -26,7 +29,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    @appointment = Appointment.new
+    # @appointment = Appointment.new
     current_user_and_pets
   end
 
@@ -44,7 +47,7 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-    @appointment = Appointment.new(appointment_params)
+    # @appointment = Appointment.new(appointment_params)
     current_user_and_pets
 
     respond_to do |format|
@@ -84,9 +87,9 @@ class AppointmentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_appointment
-      @appointment = Appointment.find(params[:id])
-    end
+    # def set_appointment
+    #   @appointment = Appointment.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params

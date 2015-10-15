@@ -19,6 +19,14 @@ class ActionController::TestCase
   def setup
     @request.env["devise.mapping"] = Devise.mappings[:admin]
     # sign_in FactoryGirl.create(:admin)
-    sign_in users(:user_admin)
+    @user = users(:user_admin)
+    sign_in @user
+    @ability = Ability.new(@user)
+    session[:user_id] = @user.id
+    # current_user = user
+
+    # @ability = Object.new
+    # @ability.extend(CanCan::Ability)
+    # @controller.stubs(:current_ability).returns(@ability)
   end
 end

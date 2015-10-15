@@ -12,4 +12,7 @@
 class Right < ActiveRecord::Base
   belongs_to :user
   belongs_to :role
+
+  validates_uniqueness_of :role, scope: :user
+
 end

@@ -24,7 +24,7 @@
         $.ajax({
           url: "<%= pets_per_user_path %>",
           data: {
-            id: $("#appointment_user_id option:selected").val()
+            appointment_user_id: $("#appointment_user_id option:selected").val()
           },
           dataType: "script"
         });

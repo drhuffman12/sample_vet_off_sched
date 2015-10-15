@@ -19,6 +19,7 @@ class Pet < ActiveRecord::Base
 
   validates_presence_of :name, uniqueness: true
   validates :name, length: { maximum: 35 }
+  # validates :pet_type, inclusion: { in: Pet.pet_types }
   validates :pet_type, inclusion: { in: ['dog','cat','bird'] }
   validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :weight, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -34,4 +35,9 @@ class Pet < ActiveRecord::Base
   def self.pet_owners
     (self.pet_owner_ids) ? User.where(["id IN (?)", self.pet_owner_ids]) : []
   end
+
+  # # Pet.pet_types
+  # def self.pet_types
+  #   ['dog','cat','bird']
+  # end
 end

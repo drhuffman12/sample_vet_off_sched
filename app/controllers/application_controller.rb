@@ -18,15 +18,22 @@ class ApplicationController < ActionController::Base
     authenticate_user! unless (controller_name == 'Home')
   end
 
+  # load_and_authorize_resource
+
   before_action :prep_menu
 
   def prep_menu
     @menu = []
     @menu << {label: 'Home', link: root_path}
-    @menu << {label: 'Roles', link: roles_path}
-    @menu << {label: 'Users', link: users_path}
-    @menu << {label: 'Rights', link: rights_path}
-    @menu << {label: 'Pets', link: pets_path}
-    @menu << {label: 'Appointments', link: appointments_path}
+    @menu << {label: 'Roles', link: roles_path} if (current_user) && (current_user.ability.can? :read, Role)
+    @menu << {label: 'Users', link: users_path} if (current_user) && (current_user.ability.can? :read, User)
+    @menu << {label: 'Rights', link: rights_path} if (current_user) && (current_user.ability.can? :read, Right)
+    @menu << {label: 'Pets', link: pets_path} if (current_user) && (current_user.ability.can? :read, Pet)
+    @menu << {label: 'Appointments', link: appointments_path} if (current_user) && (current_user.ability.can? :read, Appointment)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = "Access denied!"
+    redirect_to root_url
   end
 end

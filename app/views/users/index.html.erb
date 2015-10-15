@@ -1,10 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Users</h1>
 
 <table>
   <thead>
     <tr>
+      <th>Admin?</th>
       <th>Name</th>
       <th>Email</th>
       <th>Address</th>
@@ -22,6 +21,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.admin? %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.address %></td>
