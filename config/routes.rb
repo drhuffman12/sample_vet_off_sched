@@ -1,16 +1,7 @@
 Rails.application.routes.draw do
   resources :rights
   get 'appointments/pets_per_user' => 'appointments#pets_per_user', as: :pets_per_user
-  resources :appointments do
-    # get 'pets_per_user/:id' => 'appointments#pets_per_user', as: :pets_per_user
-    # get 'pets_per_user/:user_id' => 'appointments#pets_per_user', as: :pets_per_user
-    # get 'pets_per_user'
-    # get 'pets_per_user', as: :pets_per_user
-  end
-  # get 'appointments/pets_per_user/:id' => 'appointments#pets_per_user', as: :pets_per_user
-  # get 'appointments/:id/pets_per_user/:user_id' => 'appointments#pets_per_user', as: :pets_per_user
-  # get 'pets_per_user/:id' => 'appointments#pets_per_user', as: :pets_per_user
-
+  resources :appointments
   resources :pets
   resources :users
   resources :roles

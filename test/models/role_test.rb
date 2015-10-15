@@ -15,6 +15,7 @@ class RoleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+
   # setup do
   #   seed_data
   # end

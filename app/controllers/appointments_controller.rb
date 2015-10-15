@@ -1,24 +1,14 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
-  # def pet_owners
-  #   owner_ids = Pet.select(:user_id).all.pluck(:user_id).sort.uniq
-  # end
-
   def pets_per_user
     begin
-      # @appointment.user_id = params[:id]
-      # current_user_and_pets
-
-      # @pets = Carmen::states(params[:user_id])
       @pet_owners = Pet.pet_owners
       @user = @pet_owners.where(id: params[:id]).first
-      # @user = User.where(id: params[:id]).where(["id IN (?)", pet_owners]).first
       @pets = (@user ? @user.pets : nil)
     rescue
       @pets = nil
     end
-    # render partial: 'appointments/pets_per_user'
   end
 
   # GET /appointments
@@ -45,10 +35,7 @@ class AppointmentsController < ApplicationController
 
   def current_user_and_pets
     @pet_owners = Pet.pet_owners
-    # @appointment.user_id = @pet_owners.first.id unless (@appointment.user_id) || (!@pet_owners)
-    # @pet_owners = @pet_owners.where(id: @appointment.user_id) if @appointment.user_id
     @user = @pet_owners.where(id: @appointment.user_id).first
-    # @user = User.where(id: @appointment.user_id).where(["id IN (?)", pet_owners]).first
     @pets = (@user ? @user.pets : nil)
   end
 
@@ -101,6 +88,6 @@ class AppointmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:user_id, :pet_id, :date_of_visit, :reminder, :reason, :user_id)
+      params.require(:appointment).permit(:user_id, :pet_id, :date_of_visit, :reminder, :reason)
     end
 end
