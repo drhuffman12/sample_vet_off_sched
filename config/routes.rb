@@ -18,11 +18,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  root 'home#index'
-  # authenticated :user do
-  #   root to: 'home#index', as: :authenticated_root
-  # end
+  authenticated :user do
+    root to: 'home#index', as: :authenticated_root
+  end
   # root to: redirect('/users/sign_in')
+
+  root to: 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

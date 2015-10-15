@@ -50,3 +50,10 @@ appt_cust:
   date_of_visit: <%= DateTime.current + 1 %>
   reminder: false
   reason: MyString
+
+appt_admin:
+  user: user_admin
+  pet: pet_cust
+  date_of_visit: <%= DateTime.current + 1 %>
+  reminder: false
+  reason: MyString

@@ -12,6 +12,7 @@ class ActiveSupport::TestCase
     require "#{Rails.root}/db/seeds.rb"
   end
 
+  # include Devise::TestHelpers
 end
 
 class ActionController::TestCase
@@ -20,8 +21,8 @@ class ActionController::TestCase
     @request.env["devise.mapping"] = Devise.mappings[:admin]
     # sign_in FactoryGirl.create(:admin)
     @user = users(:user_admin)
-    sign_in @user
     @ability = Ability.new(@user)
+    sign_in :user, @user
     session[:user_id] = @user.id
     # current_user = user
 

@@ -30,38 +30,48 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
     user ||= User.new # guest user (not logged in)
+
+    # can :manage, :all
+
     if user.admin?
       can :manage, :all
     else
 
-      if user.recept?
-        can :read, :all
-        can :manage, [User,Pet,Appointment]
-      end
+      if !(user.recept? || user.dr? || user.cust?)
+        # can :manage, :all
+        can :manage, :none
+      else
 
-      if user.dr?
-        can :read, :all
-        can :manage, Pet
-      end
-
-      if user.cust?
-        can :read, User do |obj|
-          obj.id == user.id
-        end
-        can :read, Pet do |obj|
-          obj.user_id == user.id
-        end
-        can :read, Appointment do |obj|
-          obj.user_id == user.id
+        if user.recept?
+          can :read, :all
+          can :manage, [User,Pet,Appointment]
         end
 
-        can :update, User do |obj|
-          obj.id == user.id
+        if user.dr?
+          can :read, :all
+          can :manage, Pet
         end
-        can :update, Pet do |obj|
-          obj.user_id == user.id
+
+        if user.cust?
+          can :read, User do |obj|
+            obj.id == user.id
+          end
+          can :read, Pet do |obj|
+            obj.user_id == user.id
+          end
+          can :read, Appointment do |obj|
+            obj.user_id == user.id
+          end
+
+          can :update, User do |obj|
+            obj.id == user.id
+          end
+          can :update, Pet do |obj|
+            obj.user_id == user.id
+          end
         end
       end
+
 
     end
 
