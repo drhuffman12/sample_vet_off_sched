@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     @menu = []
     @menu << {label: 'Roles', link: roles_path}
     @menu << {label: 'Users', link: users_path}
+    @menu << {label: 'Rights', link: rights_path}
     @menu << {label: 'Pets', link: pets_path}
     @menu << {label: 'Appointments', link: appointments_path}
   end

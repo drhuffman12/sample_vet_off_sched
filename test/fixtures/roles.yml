@@ -25,3 +25,7 @@ missing_name:
 role_cust:
   name: cust
   description: Customer
+
+role_dr:
+  name: dr
+  description: Doctor

@@ -15,6 +15,9 @@ class RoleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+  # setup do
+  #   seed_data
+  # end
 
   test "a role with an invalid name does not save" do
     role = Role.new(name: 'foo')

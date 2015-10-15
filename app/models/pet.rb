@@ -22,5 +22,16 @@ class Pet < ActiveRecord::Base
   validates :pet_type, inclusion: { in: ['dog','cat','bird'] }
   validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :weight, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates_presence_of :breed #, null: false
+  validates_presence_of :breed
+
+  # Pet.pet_owner_ids
+  def self.pet_owner_ids
+    owners = self.where.not(user_id: nil).select(:user_id).all
+    (owners.empty?) ? nil : owners.pluck(:user_id).to_a.sort.uniq
+  end
+
+  # Pet.pet_owners
+  def self.pet_owners
+    (self.pet_owner_ids) ? User.where(["id IN (?)", self.pet_owner_ids]) : []
+  end
 end

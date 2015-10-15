@@ -68,6 +68,8 @@ class UserTest < ActiveSupport::TestCase
   test "a user with years_in_practice LESS than 1 does not save" do
     user = users(:missing_name)
     user.name = 'foo'
+    role_dr = Role.find_or_create_by(name: 'dr', description: 'Doctor')
+    user.roles << role_dr
     user.years_in_practice = 0
     assert !(user.save), __method__
   end
@@ -75,6 +77,8 @@ class UserTest < ActiveSupport::TestCase
   test "a user with years_in_practice BETWEEN 1 and 100 does save" do
     user = users(:missing_name)
     user.name = 'foo'
+    role_dr = Role.find_or_create_by(name: 'dr', description: 'Doctor')
+    user.roles << role_dr
     user.years_in_practice = 1
     assert (user.save), __method__
     user.years_in_practice = 100
@@ -84,6 +88,8 @@ class UserTest < ActiveSupport::TestCase
   test "a user with years_in_practice GREATER than 100 does not save" do
     user = users(:missing_name)
     user.name = 'foo'
+    role_dr = Role.find_or_create_by(name: 'dr', description: 'Doctor')
+    user.roles << role_dr
     user.years_in_practice = 101
     assert !(user.save), __method__
   end

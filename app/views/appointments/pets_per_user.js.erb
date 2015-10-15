@@ -1,0 +1,2 @@
+$('#pet_selector').html('<%= escape_javascript((@pets.nil? || @pets.empty?) ? "<i>Please select a Pet Owner</i>".html_safe : collection_select(:appointment, :pet_id, @pets, :id, :name, {selected: 0, include_blank: 'Select a pet.'})) %>');
+//$('#pet_selector').html("<h4>User: <%= @user.name if @user %> has pets: <%= @pets.to_a %>, params: <%= params.inspect %></h4>");

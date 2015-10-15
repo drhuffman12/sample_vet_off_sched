@@ -30,4 +30,19 @@ class Appointment < ActiveRecord::Base
     end
   end
 
+  validate :pet_owner
+
+  def pet_owner
+    if (user && pet)
+      if user.pets.empty?
+        errors.add(:user_id, "'#{user.name}' has no pets")
+      else
+        errors.add(:pet_id, "'#{pet.name}' is not owned by user '#{user.name}'") unless user.pets.collect{|pet| pet.id}.include?(pet_id)
+      end
+    else
+      errors.add(:user_id, "Customer Missing") unless user
+      errors.add(:pet_id, "Pet Missing") unless pet
+    end
+  end
+
 end

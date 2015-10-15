@@ -1,4 +1,37 @@
 <%= form_for(@appointment) do |f| %>
+
+  <!--
+  <script type="text/javascript" charset="utf-8">
+    function change_user_select(user_id)
+    {
+      new Ajax.Request('/appointments/pets_per_user/'+user_id,
+        {
+          method: 'get',
+          onSuccess: function(transport) {
+            $('pet_selector').replace(transport.responseText);
+          },
+          onFailure: function(transport) {
+            $('pet_selector').replace('error');
+          }
+        });
+    }
+  </script>
+  -->
+
+  <script>
+    $(document).ready(function() {
+      $('#appointment_user_id').change(function() {
+        $.ajax({
+          url: "<%= pets_per_user_path %>",
+          data: {
+            id: $("#appointment_user_id option:selected").val()
+          },
+          dataType: "script"
+        });
+      });
+    });
+  </script>
+
   <% if @appointment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
@@ -12,12 +45,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= collection_select(:appointment, :user_id, User.all, :id, :name, {prompt: true}) %>
+    <%= f.label :user_id, 'Pet Owner' %>
+    <br>
+    <%= collection_select(:appointment, :user_id, @pet_owners, :id, :name, {selected: (@appointment.nil?) ? 0 : @appointment.user_id, include_blank: 'Select a user'})
+    %>
   </div>
   <div class="field">
     <%= f.label :pet_id %><br>
-    <%= collection_select(:appointment, :pet_id, Pet.all, :id, :name, {prompt: true}) %>
+    <div id='pet_selector'>
+      <%= (@pets.nil? || @pets.empty?) ? "<i>Please select a Pet Owner</i>".html_safe : collection_select(:appointment, :pet_id, @pets, :id, :name, {prompt: true, :selected => @appointment.pet_id || 0, include_blank: 'Select a pet.'}) %>
+    </div>
   </div>
   <div class="field">
     <%= f.label :date_of_visit %><br>
