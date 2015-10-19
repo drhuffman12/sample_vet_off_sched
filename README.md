@@ -1,6 +1,6 @@
-# repo: https://github.com/drhuffman12/sample_vet_off_sched
+#### repo: https://github.com/drhuffman12/sample_vet_off_sched
 
-Sample Rails application for managing a veterinary practice.
+# Sample Rails application for managing a veterinary practice.
 
 Given I am the owner of a veterinary practice:
 
