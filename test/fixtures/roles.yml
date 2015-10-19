@@ -33,3 +33,8 @@ role_dr:
 role_admin:
   name: admin
   description: admin
+
+role_recept:
+  id: 1
+  name: recept
+  description: recept 1

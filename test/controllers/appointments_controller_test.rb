@@ -2,15 +2,10 @@ require 'test_helper'
 
 class AppointmentsControllerTest < ActionController::TestCase
   setup do
-    sign_in users(:user_admin)
-    # sign_in users(:appt_cust)
-    # sign_in users(:one)
-    # @appointment = appointments(:one)
-    # @appointment = appointments(:appt_cust)
-    @appointment = appointments(:appt_admin)
-    # @user = users(:user_cust)
-    # @pet = pets(:pet_cust)
-    # @role = roles(:role_cust)
+    @user = users(:user_recept)
+    @admin = users(:user_admin)
+    sign_in @admin
+    @appointment = appointments(:appt_cust)
   end
 
   test "should get index" do

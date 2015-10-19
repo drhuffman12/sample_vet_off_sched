@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
+    <%= f.label 'Owner' %><br>
     <%= collection_select(:pet, :user_id, User.all, :id, :name, {prompt: true}) %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label 'Pet' %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">

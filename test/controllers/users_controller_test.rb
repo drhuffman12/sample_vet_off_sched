@@ -1,9 +1,11 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+
   setup do
-    @user = users(:one)
-    # @user = users(:user_admin)
+    @user = users(:user_recept)
+    @admin = users(:user_admin)
+    sign_in @admin
   end
 
   test "should get index" do
@@ -17,14 +19,14 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # TODO:
-  # test "should create user" do
-  #   assert_difference('User.count') do
-  #     post :create, user: { address: @user.address, email: @user.email, city: @user.city, name: @user.name, school: @user.school, state: @user.state, years_in_practice: @user.years_in_practice, zip: @user.zip }
-  #   end
-  #
-  #   assert_redirected_to user_path(assigns(:user))
-  # end
+  test "should create user" do
+    assert_difference('User.count') do
+      user_hash = { address: @user.address, email: 'a' + @user.email, city: @user.city, name: 'a' + @user.name, school: @user.school, state: @user.state, years_in_practice: @user.years_in_practice, zip: @user.zip, password: '12345678' }
+      post :create, user: user_hash
+    end
+
+    assert_redirected_to user_path(assigns(:user))
+  end
 
   test "should show user" do
     get :show, id: @user

@@ -16,10 +16,6 @@ class RoleTest < ActiveSupport::TestCase
   #   assert true
   # end
 
-  # setup do
-  #   seed_data
-  # end
-
   test "a role with an invalid name does not save" do
     role = Role.new(name: 'foo')
     assert !(role.save), __method__
@@ -30,7 +26,6 @@ class RoleTest < ActiveSupport::TestCase
   end
 
   test "the roles are seeded" do
-    seed_data
     roles = Role.select(:name).all.collect{|role| role.name}
     assert_equal [], (%w( admin recept dr cust ) - roles), __method__
   end

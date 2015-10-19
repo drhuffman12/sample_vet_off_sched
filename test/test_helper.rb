@@ -11,23 +11,22 @@ class ActiveSupport::TestCase
   def seed_data
     require "#{Rails.root}/db/seeds.rb"
   end
-
-  # include Devise::TestHelpers
 end
 
 class ActionController::TestCase
   include Devise::TestHelpers
   def setup
     @request.env["devise.mapping"] = Devise.mappings[:admin]
-    # sign_in FactoryGirl.create(:admin)
     @user = users(:user_admin)
     @ability = Ability.new(@user)
     sign_in :user, @user
     session[:user_id] = @user.id
-    # current_user = user
 
-    # @ability = Object.new
-    # @ability.extend(CanCan::Ability)
-    # @controller.stubs(:current_ability).returns(@ability)
+    @admin = users(:user_admin)
+    @admin.roles << roles(:role_admin)
+    @ability_admin = Ability.new(@admin)
+    sign_in :users, @admin
+    session[:user_id] = @admin.id
   end
+
 end

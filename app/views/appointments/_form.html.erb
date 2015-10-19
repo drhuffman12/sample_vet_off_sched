@@ -45,7 +45,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id, 'Pet Owner' %>
+    <%= f.label :user_id, 'Owner' %>
     <br>
     <%= collection_select(:appointment, :user_id, @pet_owners, :id, :name, {selected: (@appointment.nil?) ? 0 : @appointment.user_id, include_blank: 'Select a user'})
     %>

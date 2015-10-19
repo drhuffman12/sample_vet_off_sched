@@ -11,7 +11,7 @@ Given I am the owner of a veterinary practice:
     4. State
     5. Zip -­‐ should be at most 5 digits
     6. School Received Degree From
-    7. Years in Practice -­‐ must be value between 1-­‐100
+    7. Years in Practice -­‐ must be value between 1 and 100
 
   2. As the receptionist of the veterinary practice, I should be able to schedule an appointment for a customer's pet with a specific veterinary doctor. The appointment should contain the following information
     1. Date of Visit -­‐ date cannot be in the past; value is required
@@ -41,4 +41,3 @@ Some logins are generated via 'db/seed.rb' (rake db:seed). They are all given in
   * dr2@nowhere.com
   * admin@nowhere.com
   * recept@nowhere.com
-

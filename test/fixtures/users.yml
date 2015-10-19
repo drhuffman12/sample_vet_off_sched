@@ -16,7 +16,6 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 one:
-  # role_id: roles(:cust)
   name: Some Doctor
   email: one@nowhere.com
   address: MyAddress
@@ -27,7 +26,6 @@ one:
   years_in_practice: 1
 
 missing_name:
-  # role_id: role(:missing_name)
   name:
   email: missing_name@nowhere.com
   address: MyAddress
@@ -69,7 +67,6 @@ name_len_gt_35:
   years_in_practice: 1
 
 user_cust:
-#  role: cust
   name: Customer
   email: user_cust@nowhere.com
   address: MyAddress
@@ -80,9 +77,18 @@ user_cust:
   years_in_practice: 1
 
 user_admin:
-#  roles: <%= Role.where(name: 'admin') %>
   name: admin
   email: user_admin@nowhere.com
+  address: MyAddress
+  city: MyCity
+  state: My
+  zip: 1
+  school: MySchool
+  years_in_practice: 1
+
+user_recept:
+  name: recept1
+  email: user_recept1@nowhere.com
   address: MyAddress
   city: MyCity
   state: My
